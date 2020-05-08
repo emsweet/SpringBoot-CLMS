@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+    <!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
+    <!-- <meta name="description" content="">
+<meta name="author" content=""> -->
+    <title>CLMS HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+    <link href="../static/css/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <link
+            href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+            rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+          crossorigin="anonymous">
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <!-- <script
+src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/js/bootstrap.bundle.js"
+integrity="sha256-KrRa8Ba46ro/+RPPjj/MSJqZViXxrnTp8Nyg5zLpHpQ="crossorigin="anonymous"></script> -->
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">CLMS</div>
+        <div class="list-group list-group-flush">
+            <!-- <a href="#" class="list-group-item list-group-item-action
+bg-light">查询</a> -->
+            <a href="/reserve/list" class="list-group-item
+                        list-group-item-action
+                        bg-light">预定教室&实验室</a>
+            <a href="/manageplace/list" class="list-group-item
+                        list-group-item-action
+                        bg-light">管理教室&实验室</a>
+            <a href="/users/list" class="list-group-item
+                        list-group-item-action
+                        bg-light">管理用户</a>
+            <a href="#" class="list-group-item list-group-item-action
+                        bg-light">用户预定请求</a>
+            <a href="#" class="list-group-item list-group-item-action
+                        bg-light">统计</a>
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light
+                    border-bottom">
+            <button class="btn btn-primary" id="menu-toggle">Menu</button>
+            <button class="navbar-toggler" type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse"
+                 id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"
+                           id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right"
+                             aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">历史预定记录</a>
+                            <a class="dropdown-item" href="#">修改个人信息</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">登出</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <form action="#" th:action="@{/reserve/search}" th:object="${reservation}" method="post">
+                <div class="form-row align-items-center">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="radio1"
+                               name="radio1" th:field="*{place.type}" th:value="C">
+                        <label class="custom-control-label"
+                               for="radio1">教室</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="radio2"
+                               name="radio1" th:field="*{place.type}" th:value="L">
+                        <label class="custom-control-label" for="radio2">实验室</label>
+                    </div>
+                    <div class="form-group">
+                        <label>校区</label>
+                        <select class="custom-select" th:field="*{place.campus}">
+                            <option th:each="campus:${campuses}" th:text="${campus}" th:value="${campus}">all
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>教学楼</label>
+                        <select class="custom-select" th:field="*{place.building}">
+                            <option th:each="b:${buildings}" th:text="${b}" th:value="${b}">all</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-1">
+                        <label>容量</label>
+                        <input class="form-control" th:field="*{place.capacity}" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>日期</label>
+                        <input class="form-control" type="date" th:field="*{rdate}" th:value="*{rdate}"/>
+                    </div>
+                    <div class="form-group  ">
+                        <label>开始时间</label>
+                        <input class="form-control" type="time" th:field="*{st_time}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>结束时间</label>
+                        <input class="form-control" type="time" th:field="*{ed_time}"/>
+                    </div>
+                    <div class="col">
+                        <label>可预订</label>
+                        <input type="radio" name="radio3 " id="radio3" th:field="*{status} " th:value="true"/>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-secondary">查询</button>
+                    </div>
+                </div>
+            </form>
+            <div th:switch="${places}" class="container my-5">
+                <div class="col-md-10">
+                    <!--                                        <h2 th:case="null">No Users yet!</h2>-->
+                    <div th:case="*">
+                        <table class="table table-striped
+                                    table-responsive-md">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Campus</th>
+                                <th>Building</th>
+                                <th>Capacity</th>
+                                <th>Type</th>
+
+                                <th>Reserve</th>
+                            </tr>
+                            </thead>
+                            <!--表格模板-->
+                            <tbody>
+                            <tr th:each="place : ${places}">
+                                <td th:text="${place.name}"></td>
+                                <td th:text="${place.campus}"></td>
+                                <td th:text="${place.building}"></td>
+                                <td th:text="${place.capacity}"></td>
+                                <td th:text="${place.type}"></td>
+                                <td><a
+                                        th:href="@{/reserve/makeReserve/{id}(id=${place.pid})}"
+                                        class="btn btn-primary"><i
+                                        class="fa fa-check
+                                                        ml-2"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+</body>
+
+</html>
