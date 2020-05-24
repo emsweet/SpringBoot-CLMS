@@ -15,14 +15,8 @@ public class MainController {
     public String admin() {
         return "admin-home";
     }
-//
-//    @GetMapping("/user")
-//    public String user() {
-//        return "<h2>Welcome User!</h2>";
-//    }
-//
-//    @GetMapping("/all")
-//    public String all() {
-//        return "<h2>Hello Everyone!</h2>";
-//    }
+    @GetMapping("user")
+    public String user() {
+        return "user-home";
+    }
 }

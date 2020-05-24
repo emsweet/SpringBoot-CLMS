@@ -31,6 +31,7 @@ public class PlaceService {
         placeRepository.save(place);
     }
 
+
     public List<String> findAllBuilding(){return placeRepository.findAllBuilding();}
     public List<String> findAllCampus(){return placeRepository.findALlCampus();}
 }

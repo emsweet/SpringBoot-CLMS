@@ -4,10 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,
             shrink-to-fit=no">
-    <!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
-    <!-- <meta name="description" content="">
-    <meta name="author" content=""> -->
-    <title>CLMS HOME</title>
+    <title>USER HOME</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/simple-sidebar.css" rel="stylesheet">
     <link href="../static/css/simple-sidebar.css" rel="stylesheet">
@@ -44,14 +41,11 @@
                 bg-light">查询</a> -->
             <a href="/reserve/list" class="list-group-item list-group-item-action
                         bg-light">预定教室&实验室</a>
-            <a href="/manageplace/list" class="list-group-item list-group-item-action
-                        bg-light">管理教室&实验室</a>
-            <a href="/users/list" class="list-group-item list-group-item-action
-                        bg-light">管理用户</a>
-            <a href="/reserve/requestlist" class="list-group-item list-group-item-action
-                        bg-light">用户预定请求</a>
             <a href="#" class="list-group-item list-group-item-action
-                        bg-light">统计</a>
+                        bg-light">查询教室&实验室</a>
+            <a href="/reserve/history" class="list-group-item list-group-item-action
+                        bg-light">我的预定</a>
+
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -98,55 +92,11 @@
                 </ul>
             </div>
         </nav>
-        <div class="container-fluid my-2 mx-5">
-            <h3> Update Classroom or Laboratory</h3>
-            <div class="col-md-10">
-                <form action="#" th:action="@{/manageplace/update/{id}(id=${place.pid})}" th:object="${place}" method="post">
-                    <div class="row">
-                        <div class="form-group col-md-8">
-                            <label for="name" class="col-form-label">Name</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="name">
-                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-8">
-                            <label for="campus" class="col-form-label">Campus</label>
-                            <input type="text" th:field="*{campus}" class="form-control" id="campus"
-                                   placeholder="campus">
-                            <span th:if="${#fields.hasErrors('campus')}" th:errors="*{campus}"
-                                  class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-8">
-                            <label for="building" class="col-form-label">Building</label>
-                            <input type="text" th:field="*{building}" class="form-control" id="building"
-                                   placeholder="building">
-                            <span th:if="${#fields.hasErrors('building')}" th:errors="*{building}"
-                                  class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-8">
-                            <label for="capacity" class="col-form-label">Capacity</label>
-                            <input type="text" th:field="*{capacity}" class="form-control" id="capacity"
-                                   placeholder="capacity">
-                            <span th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}"
-                                  class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-8">
-                            <label for="type" class="col-form-label">Type</label>
-                            <input type="text" th:field="*{type}" class="form-control" id="type"
-                                   placeholder="type">
-                            <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}"
-                                  class="text-danger"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="submit" class="btn btn-primary" value="Update">
-                        </div>
-                        <div class="form-group col-md-8"></div>
-                    </div>
-                </form>
-
-            </div>
+        <div class="container-fluid my-3 mx-2">
+            <p>
+                通知公告栏
+            </p>
         </div>
-
-
     </div>
 
 </div>
@@ -157,5 +107,4 @@
     });
 </script>
 </body>
-
 </html>

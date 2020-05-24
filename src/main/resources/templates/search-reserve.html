@@ -42,19 +42,22 @@ integrity="sha256-KrRa8Ba46ro/+RPPjj/MSJqZViXxrnTp8Nyg5zLpHpQ="crossorigin="anon
         <div class="list-group list-group-flush">
             <!-- <a href="#" class="list-group-item list-group-item-action
 bg-light">查询</a> -->
-            <a href="/reserve/list" class="list-group-item
-                        list-group-item-action
+            <a href="/reserve/list" class="list-group-item list-group-item-action
                         bg-light">预定教室&实验室</a>
-            <a href="/manageplace/list" class="list-group-item
-                        list-group-item-action
-                        bg-light">管理教室&实验室</a>
-            <a href="/users/list" class="list-group-item
-                        list-group-item-action
-                        bg-light">管理用户</a>
             <a href="#" class="list-group-item list-group-item-action
-                        bg-light">用户预定请求</a>
-            <a href="#" class="list-group-item list-group-item-action
-                        bg-light">统计</a>
+                        bg-light">查询教室&实验室</a>
+            <a href="/reserve/history" class="list-group-item list-group-item-action
+                        bg-light">我的预定</a>
+<!--            <a href="/manageplace/list" class="list-group-item-->
+<!--                        list-group-item-action-->
+<!--                        bg-light">管理教室&实验室</a>-->
+<!--            <a href="/users/list" class="list-group-item-->
+<!--                        list-group-item-action-->
+<!--                        bg-light">管理用户</a>-->
+<!--            <a href="/reserve/requestlist" class="list-group-item list-group-item-action-->
+<!--                        bg-light">用户预定请求</a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action-->
+<!--                        bg-light">统计</a>-->
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -95,7 +98,7 @@ bg-light">查询</a> -->
                             <a class="dropdown-item" href="#">历史预定记录</a>
                             <a class="dropdown-item" href="#">修改个人信息</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">登出</a>
+                            <a class="dropdown-item" href="/logout">登出</a>
                         </div>
                     </li>
                 </ul>
@@ -191,6 +194,7 @@ bg-light">查询</a> -->
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

@@ -28,6 +28,12 @@ public class UserService implements UserDetailsService {
         user.setPassword(user1.getPassword());
         this.userRepository.save(user);
     }
+    public User findByName(String name)
+    {
+        User user=userRepository.findByName(name).orElseThrow(()->new IllegalArgumentException("Invalid User Name"+name));
+        return user;
+    }
+
     public User findById(long user_id){
         User user=this.userRepository.findById(user_id).orElseThrow(()->new IllegalArgumentException("Invalid Student id:"+user_id));
         return user;

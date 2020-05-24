@@ -28,8 +28,13 @@ public class Reservation {
     @Column(name="rdate")
     private String rdate;
 
+    @Column(name="description")
+    private String description;
+
     @ManyToOne
     private Place place;
+
+
 
     @ManyToOne
     private User user;
@@ -102,16 +107,26 @@ public class Reservation {
         this.rdate = rdate;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
                 "rid=" + rid +
                 ", status='" + status + '\'' +
                 ", logtime=" + logtime +
-                ", st_time=" + st_time +
-                ", ed_time=" + ed_time +
-                ", rdate=" + rdate +
+                ", st_time='" + st_time + '\'' +
+                ", ed_time='" + ed_time + '\'' +
+                ", rdate='" + rdate + '\'' +
+                ", description='" + description + '\'' +
                 ", place=" + place +
+                ", user=" + user +
                 '}';
     }
 }

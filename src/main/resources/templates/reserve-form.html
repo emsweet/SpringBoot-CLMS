@@ -44,14 +44,10 @@
                 bg-light">查询</a> -->
             <a href="/reserve/list" class="list-group-item list-group-item-action
                         bg-light">预定教室&实验室</a>
-            <a href="/manageplace/list" class="list-group-item list-group-item-action
-                        bg-light">管理教室&实验室</a>
-            <a href="/users/list" class="list-group-item list-group-item-action
-                        bg-light">管理用户</a>
-            <a href="/reserve/requestlist" class="list-group-item list-group-item-action
-                        bg-light">用户预定请求</a>
             <a href="#" class="list-group-item list-group-item-action
-                        bg-light">统计</a>
+                        bg-light">查询教室&实验室</a>
+            <a href="/reserve/history" class="list-group-item list-group-item-action
+                        bg-light">我的预定</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -99,45 +95,47 @@
             </div>
         </nav>
         <div class="container-fluid my-2 mx-5">
-            <h3> Update Classroom or Laboratory</h3>
+            <h3> 填写预定表</h3>
             <div class="col-md-10">
-                <form action="#" th:action="@{/manageplace/update/{id}(id=${place.pid})}" th:object="${place}" method="post">
+                <form action="#" th:action="@{/reserve/addreserve}" th:object="${reservation}" method="post">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label for="name" class="col-form-label">Name</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="name">
-                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                            <label for="uname" class="col-form-label">Name</label>
+                            <input readonly="true"  type="text" th:field="*{user.name}" class="form-control" id="uname" placeholder="user">
+                            <span th:if="${#fields.hasErrors('user.name')}" th:errors="*{user.name}" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="campus" class="col-form-label">Campus</label>
-                            <input type="text" th:field="*{campus}" class="form-control" id="campus"
-                                   placeholder="campus">
-                            <span th:if="${#fields.hasErrors('campus')}" th:errors="*{campus}"
-                                  class="text-danger"></span>
+                            <label for="pid" class="col-form-label">PlaceId</label>
+                            <input readonly="true"  type="text"  th:field="*{place.pid}" class="form-control" id="pid" placeholder="placeId">
+                            <span th:if="${#fields.hasErrors('place.pid')}" th:errors="*{place.pid}" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="building" class="col-form-label">Building</label>
-                            <input type="text" th:field="*{building}" class="form-control" id="building"
-                                   placeholder="building">
-                            <span th:if="${#fields.hasErrors('building')}" th:errors="*{building}"
-                                  class="text-danger"></span>
+                            <label for="pname" class="col-form-label">PlaceName</label>
+                            <input readonly="true"  type="text"  th:field="*{place.name}" class="form-control" id="pname" placeholder="placeName">
+                            <span th:if="${#fields.hasErrors('place.name')}" th:errors="*{place.name}" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="capacity" class="col-form-label">Capacity</label>
-                            <input type="text" th:field="*{capacity}" class="form-control" id="capacity"
-                                   placeholder="capacity">
-                            <span th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}"
-                                  class="text-danger"></span>
+                            <label for="rdate" class="col-form-label">Date</label>
+                            <input readonly="true"  type="text" th:field="*{rdate}" class="form-control" id="rdate" placeholder="date">
+                            <span th:if="${#fields.hasErrors('rdate')}" th:errors="*{rdate}" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="type" class="col-form-label">Type</label>
-                            <input type="text" th:field="*{type}" class="form-control" id="type"
-                                   placeholder="type">
-                            <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}"
-                                  class="text-danger"></span>
+                            <label for="st_time" class="col-form-label">start_time</label>
+                            <input readonly="true"  type="text" th:field="*{st_time}" class="form-control" id="st_time" placeholder="start_time">
+                            <span th:if="${#fields.hasErrors('st_time')}" th:errors="*{st_time}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="ed_time" class="col-form-label">end_time</label>
+                            <input readonly="true"  type="text" th:field="*{ed_time}" class="form-control" id="ed_time" placeholder="end_time">
+                            <span th:if="${#fields.hasErrors('ed_time')}" th:errors="*{ed_time}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="description" class="col-form-label">description</label>
+                            <input type="text" th:field="*{description}" class="form-control" id="description" placeholder="description">
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></span>
                         </div>
                         <div class="col-md-6">
-                            <input type="submit" class="btn btn-primary" value="Update">
+                            <input type="submit" class="btn btn-primary" value="submit">
                         </div>
                         <div class="form-group col-md-8"></div>
                     </div>

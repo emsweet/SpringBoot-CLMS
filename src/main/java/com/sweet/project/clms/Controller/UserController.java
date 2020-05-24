@@ -71,4 +71,7 @@ public class UserController {
         model.addAttribute("users", this.userService.findAll());
         return "show-user";
     }
+    public String showNoticeList(){
+        return "NoticeList";
+    }
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.awt.*;
 import java.security.Principal;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Random;
 
@@ -39,12 +40,25 @@ public class ReserveService {
     {
         return reserveRepository.selectByStatus(status);
     }
-    public void addReservation(Principal principal,Reservation reservation)
+    public void addReservation(Reservation reservation)
     {
+        reservation.setStatus("pending");
+        long pid=reservation.getPlace().getPid();
+        Place place=placeRepository.findById(pid).orElseThrow(()->new IllegalArgumentException("Invalid place_id:"+pid));
+        reservation.setPlace(place);
+        reservation.setLogtime(new Timestamp(System.currentTimeMillis()));
+        System.out.println(reservation);
         reserveRepository.save(reservation);
     }
+    public List<Reservation> getRequestList()
+    {
+        return reserveRepository.selectByStatus("pending");
+    }
+
     public void updateReserveStatus(long rid,String status)
     {
-        reserveRepository.UpdateStatus(rid,status);
+        Reservation reservation=reserveRepository.findById(rid).orElseThrow(()->new IllegalArgumentException("Invalid rid:"+rid));
+        reservation.setStatus(status);
+        reserveRepository.save(reservation);
     }
 }

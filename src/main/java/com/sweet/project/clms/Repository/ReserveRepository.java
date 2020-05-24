@@ -18,11 +18,10 @@ public interface ReserveRepository extends JpaRepository<Reservation,Long> {
     @Query(value="select * from reservation inner join place ON place.pid = reservation.place_pid where place.pid=?1",nativeQuery=true)
     List<Reservation> selectbypid(Long pid);
 //查询用户预定记录
-    @Query(value="select * from reservation inner join user ON users.uid = reservation.user_uid where users.uid=?1",nativeQuery=true)
+    @Query(value="select * from reservation inner join users ON users.uid = reservation.user_uid where users.uid=?1",nativeQuery=true)
     List<Reservation>selectByUser(Long uid);
 // 根据类型查询预定记录
-@Query(value="select * from reservation where status=?1",nativeQuery=true)
+    @Query(value="select * from reservation where status=?1",nativeQuery=true)
     List <Reservation>selectByStatus(String status);
-    @Query(value="Update reservation status SET status=?2 where rid=?1",nativeQuery=true)
-    void  UpdateStatus(Long rid,String status);
+
 }
